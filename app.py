@@ -361,7 +361,7 @@ def clean_markdown_for_pdf(text):
     text = re.sub(r'━+', '-' * 50, text)  # Replace unicode lines
     text = re.sub(r'[^\x00-\x7F]+', ' ', text)  # Remove non-ASCII chars
     text = re.sub(r'\n{3,}', '\n\n', text)  # Limit line breaks
-    text = re.sub(r'^\s+|\s+$', '', text, flags=re.MULTILINE)  # Strip whitespace
+    text = re.sub(r'^\s+|\s+
 
 def create_quantum_container(content):
     """Wrap content in quantum container"""
