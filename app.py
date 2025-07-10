@@ -350,292 +350,17 @@ def clean_markdown_for_pdf(text):
     """Clean and format markdown text for PDF export"""
     if not text:
         return ""
-    
     # Convert to string if not already
     text = str(text)
-    
     # Remove HTML tags but preserve content
     text = re.sub(r'<[^>]+>', '', text)
-    
     # Clean up common markdown issues
     text = re.sub(r'━+', '-' * 50, text)  # Replace unicode lines
     text = re.sub(r'[^\x00-\x7F]+', ' ', text)  # Remove non-ASCII chars
     text = re.sub(r'\n{3,}', '\n\n', text)  # Limit line breaks
-    text = re.sub(r'^\s+|\s+
-
-def create_quantum_container(content):
-    """Wrap content in quantum container"""
-    st.markdown(f"""
-    <div class="quantum-container">
-        {content}
-    </div>
-    """, unsafe_allow_html=True)
-
-def get_api_key():
-    """Enhanced API key input with quantum styling"""
-    key = os.getenv("GOOGLE_API_KEY")
-    if not key:
-        st.markdown("### 🔑 **NEURAL NETWORK ACCESS KEY**")
-        key = st.text_input("Enter your Gemini API Key", type="password", help="🧠 Connect to the quantum AI network")
-    return key
-
-def create_quantum_header():
-    """Create the main quantum header with animations"""
-    st.markdown("""
-    <div class="quantum-header">
-        🌌 QUANTUM SIGNAL CLASSIFIER 🛸
-    </div>
-    """, unsafe_allow_html=True)
-
-def create_quantum_loading():
-    """Create quantum loading animation"""
-    st.markdown("""
-    <div class="quantum-loading">
-        <div class="quantum-spinner"></div>
-    </div>
-    """, unsafe_allow_html=True)
-    """Advanced signal analysis with enhanced prompting"""
-    prompt = f"""
-    You are ARIA (Advanced Radio Intelligence Analyzer), a quantum-enhanced AI system specializing in extraterrestrial signal analysis with access to classified databases and advanced pattern recognition algorithms.
-    
-    🛸 DETECTED SIGNAL PARAMETERS:
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🔊 Peak Frequency: {meta['peak_freq']} MHz
-    📡 Drift Rate: {meta['drift_rate']} Hz/s  
-    📊 Signal-to-Noise Ratio: {meta['snr']} dB
-    ⚡ Pulse Width: {meta['pulse_width']} ms
-    🕐 Analysis Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} UTC
-    🌍 Observatory Location: Arecibo-Class Facility
-    🛰️ Receiver Configuration: Multi-beam Array
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    
-    🧠 COMPREHENSIVE QUANTUM ANALYSIS PROTOCOL (Target: 8192 tokens):
-    
-    Conduct an exhaustive analysis covering ALL of the following 25+ features:
-    
-    1. **PRIMARY CLASSIFICATION**: Determine signal type from: brightpixel, narrowband, narrowbanddrd, noise, squarepulsednarrowband, squiggle, squigglesquarepulse
-    
-    2. **CONFIDENCE MATRIX**: Provide percentage certainty for each classification category
-    
-    3. **SPECTRAL ANALYSIS**: Detailed frequency domain characteristics, harmonics, sidebands
-    
-    4. **TEMPORAL BEHAVIOR**: Time-domain patterns, periodicity, burst characteristics
-    
-    5. **POLARIZATION PROFILE**: Linear/circular polarization analysis and implications
-    
-    6. **DOPPLER ANALYSIS**: Velocity calculations, acceleration patterns, orbital mechanics
-    
-    7. **MODULATION DETECTION**: AM/FM/PSK/QAM analysis, symbol rates, encoding schemes
-    
-    8. **PROPAGATION MODELING**: Path loss, atmospheric effects, ionospheric interactions
-    
-    9. **INTERFERENCE ASSESSMENT**: RFI identification, terrestrial vs extraterrestrial sources
-    
-    10. **COHERENCE ANALYSIS**: Phase stability, frequency stability, drift patterns
-    
-    11. **POWER SPECTRAL DENSITY**: Energy distribution, bandwidth characteristics
-    
-    12. **CORRELATION ANALYSIS**: Cross-correlation with known signals, template matching
-    
-    13. **ANOMALY DETECTION**: Statistical outliers, unusual characteristics
-    
-    14. **ORIGIN TRIANGULATION**: Possible source locations, distance estimates
-    
-    15. **TECHNOLOGICAL ASSESSMENT**: Required transmitter power, antenna requirements
-    
-    16. **BIOLOGICAL MARKERS**: Patterns suggesting biological origin or artificial intelligence
-    
-    17. **CRYPTOGRAPHIC ANALYSIS**: Encryption detection, information theory metrics
-    
-    18. **MULTI-MESSENGER CORRELATION**: Gravitational wave, neutrino, optical counterparts
-    
-    19. **GALACTIC POSITIONING**: Stellar neighborhood analysis, habitable zone considerations
-    
-    20. **THREAT ASSESSMENT**: Security implications, defensive measures required
-    
-    21. **FOLLOW-UP PROTOCOLS**: Observation scheduling, telescope coordination
-    
-    22. **MACHINE LEARNING INSIGHTS**: Neural network feature extraction, deep learning classifications
-    
-    23. **QUANTUM ENTANGLEMENT SIGNATURES**: Non-local correlation patterns
-    
-    24. **FRACTAL ANALYSIS**: Self-similarity patterns, complexity measures
-    
-    25. **BREAKTHROUGH LISTEN COMPARISON**: Database cross-reference, historical context
-    
-    26. **SETI PROTOCOLS**: Verification procedures, international notification requirements
-    
-    27. **SIMULATION HYPOTHESIS**: Probability of artificial/simulated origin
-    
-    28. **EXOTIC PHYSICS MARKERS**: Signatures of advanced propulsion, zero-point energy
-    
-    Format as a comprehensive intelligence briefing with:
-    - Executive summary
-    - Detailed technical analysis for each feature
-    - Risk assessment matrix
-    - Recommendations for immediate and long-term actions
-    - Appendices with technical specifications
-    - Classification levels and distribution lists
-    
-    Use professional scientific terminology, include relevant equations where applicable, and provide specific numerical estimates. Make this analysis worthy of a peer-reviewed publication in Nature or Science.
-    """
-    
-    try:
-        response = model.generate_content(prompt)
-        return response.text
-    except Exception as e:
-        return f"⚠️ **QUANTUM ANALYSIS ERROR**: {str(e)}\n\nFallback analysis indicates signal classification requires manual review."
-
-# ==================== MAIN APPLICATION ====================
-
-# Configure Streamlit
-st.set_page_config(
-    page_title="🌌 Quantum Signal Classifier",
-    page_icon="🛸",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
-
-# Inject quantum CSS
-inject_quantum_css()
-
-# Create quantum header
-create_quantum_header()
-
-# Sidebar configuration
-with st.sidebar:
-    st.markdown("### 🔑 **QUANTUM NETWORK ACCESS**")
-    api_key = get_api_key()
-    
-    st.markdown("### 🎛️ **SYSTEM STATUS**")
-    st.success("🟢 Neural Network: ONLINE")
-    st.success("🟢 Quantum Processors: ACTIVE")
-    st.success("🟢 Signal Database: SYNCHRONIZED")
-    
-    st.markdown("### 📊 **LIVE METRICS**")
-    st.metric("🛰️ Active Telescopes", "1,247", "↗️ +23")
-    st.metric("🔊 Signals Processed", "892,341", "↗️ +1,205")
-    st.metric("🧠 AI Confidence", "98.7%", "↗️ +0.3%")
-
-if not api_key:
-    st.error("🚫 **QUANTUM ACCESS DENIED** - Please provide your Gemini API Key to access the neural network.")
-    st.stop()
-
-# Configure Gemini
-try:
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("gemini-2.0-flash-exp")
-except Exception as e:
-    st.error(f"🚫 **NEURAL NETWORK CONNECTION FAILED**: {str(e)}")
-    st.stop()
-
-# Main interface
-st.markdown("### 📡 **SIGNAL ACQUISITION INTERFACE**")
-
-# File uploader
-img_file = st.file_uploader(
-    "📊 Upload Signal Spectrogram (optional)",
-    type=["png", "jpg", "jpeg"],
-    help="🖼️ Upload spectrogram for visual analysis"
-)
-
-# Signal parameters
-st.markdown("### 🎛️ **QUANTUM SIGNAL PARAMETERS**")
-
-param_col1, param_col2 = st.columns(2)
-
-with param_col1:
-    peak_freq = st.number_input("🔊 Peak Frequency (MHz)", value=1420.406, format="%.3f", help="🌟 Hydrogen line frequency")
-    drift_rate = st.number_input("📡 Drift Rate (Hz/s)", value=0.0, format="%.6f", help="🚀 Doppler shift rate")
-
-with param_col2:
-    snr = st.number_input("📊 Signal-to-Noise Ratio (dB)", value=15.7, format="%.1f", help="🔋 Signal strength")
-    pulse_width = st.number_input("⚡ Pulse Width (ms)", value=1.0, format="%.3f", help="⏱️ Signal duration")
-
-# Quantum visualization moved below parameters
-st.markdown("### 🌌 **QUANTUM VISUALIZATION**")
-
-# Create real-time visualization
-fig = create_quantum_visualization()
-st.plotly_chart(fig, use_container_width=True)
-
-# Analysis button
-st.markdown("### 🧠 **QUANTUM ANALYSIS ENGINE**")
-
-if st.button("🚀 **INITIATE QUANTUM ANALYSIS**", help="🛸 Deploy advanced AI for signal classification"):
-    metadata = {
-        'peak_freq': peak_freq,
-        'drift_rate': drift_rate,
-        'snr': snr,
-        'pulse_width': pulse_width
-    }
-    
-    # Quantum loading animation
-    with st.spinner("🌌 Quantum processors analyzing signal patterns..."):
-        create_quantum_loading()
-        time.sleep(2)  # Dramatic pause for effect
-        
-        # Perform analysis
-        result = analyze_signal_advanced(metadata, model)
-    
-    # Display results in quantum container
-    st.markdown("""
-    <div class="quantum-result">
-        <h3>🛸 QUANTUM ANALYSIS COMPLETE</h3>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown(result)
-    
-    # Generate PDF report
-    try:
-        html_content, filename = generate_pdf_report(result, metadata)
-        if html_content and filename:
-            download_link = create_download_link(html_content, filename)
-            st.markdown(f"""
-            <div style="text-align: center; margin: 2rem 0;">
-                {download_link}
-            </div>
-            """, unsafe_allow_html=True)
-            st.success("📄 **QUANTUM REPORT GENERATED** - Click above to download comprehensive analysis")
-    except Exception as e:
-        st.warning(f"⚠️ Report generation encountered an issue: {str(e)}")
-    
-    # Additional quantum metrics
-    st.markdown("### 📊 **QUANTUM METRICS DASHBOARD**")
-    
-    metrics_col1, metrics_col2, metrics_col3, metrics_col4 = st.columns(4)
-    
-    with metrics_col1:
-        st.metric("🎯 Classification Accuracy", "94.2%", "↗️ +2.1%")
-    
-    with metrics_col2:
-        st.metric("⚡ Processing Speed", "0.847s", "↘️ -0.12s")
-    
-    with metrics_col3:
-        st.metric("🧠 Neural Confidence", "87.3%", "↗️ +5.4%")
-    
-    with metrics_col4:
-        st.metric("🔍 Anomaly Score", "0.023", "↘️ -0.001")
-
-# Display uploaded spectrogram
-if img_file:
-    st.markdown("### 🖼️ **SIGNAL SPECTROGRAM ANALYSIS**")
-    st.image(img_file, caption="📊 Uploaded Signal Spectrogram", use_container_width=True)
-
-# Footer
-st.markdown("---")
-st.markdown("""
-<div style="text-align: center; font-family: 'Orbitron', monospace; color: #00ffff; animation: quantumGlow 3s ease-in-out infinite;">
-🌌 **QUANTUM SIGNAL CLASSIFIER v3.0** 🛸<br>
-Powered by Advanced Neural Networks & Quantum Computing<br>
-🔬 Searching for Intelligence Beyond Earth 🌠
-</div>
-""", unsafe_allow_html=True), '', text, flags=re.MULTILINE)  # Strip whitespace
-    
+    text = re.sub(r'^\s+|\s+$', '', text, flags=re.MULTILINE)  # Strip whitespace
     # Ensure proper markdown formatting
     text = re.sub(r'^([^#\n])', r'\1', text, flags=re.MULTILINE)
-    
     return text
 
 def generate_pdf_report(analysis_result, metadata):
@@ -1009,24 +734,32 @@ if st.button("🚀 **INITIATE QUANTUM ANALYSIS**", help="🛸 Deploy advanced AI
         'snr': snr,
         'pulse_width': pulse_width
     }
-    
     # Quantum loading animation
     with st.spinner("🌌 Quantum processors analyzing signal patterns..."):
         create_quantum_loading()
         time.sleep(2)  # Dramatic pause for effect
-        
         # Perform analysis
         result = analyze_signal_advanced(metadata, model)
-    
     # Display results in quantum container
     st.markdown("""
     <div class="quantum-result">
         <h3>🛸 QUANTUM ANALYSIS COMPLETE</h3>
     </div>
     """, unsafe_allow_html=True)
-    
     st.markdown(result)
-    
+    # Generate PDF report
+    try:
+        html_content, filename = generate_pdf_report(result, metadata)
+        if html_content and filename:
+            download_link = create_download_link(html_content, filename)
+            st.markdown(f"""
+            <div style="text-align: center; margin: 2rem 0;">
+                {download_link}
+            </div>
+            """, unsafe_allow_html=True)
+            st.success("📄 **QUANTUM REPORT GENERATED** - Click above to download comprehensive analysis")
+    except Exception as e:
+        st.warning(f"⚠️ Report generation encountered an issue: {str(e)}")
     # Additional quantum metrics
     st.markdown("### 📊 **QUANTUM METRICS DASHBOARD**")
     
