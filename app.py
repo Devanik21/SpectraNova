@@ -670,7 +670,7 @@ st.set_page_config(
 inject_quantum_css()
 
 # Create quantum header
-create_quantum_header()
+
 
 # Sidebar configuration
 with st.sidebar:
