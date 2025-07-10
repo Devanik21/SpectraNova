@@ -379,7 +379,7 @@ def create_quantum_loading():
 def analyze_signal_advanced(meta, model):
     """Advanced signal analysis with enhanced prompting"""
     prompt = f"""
-    You are ARIA (Advanced Radio Intelligence Analyzer), a quantum-enhanced AI system specializing in extraterrestrial signal analysis.
+    You are ARIA (Advanced Radio Intelligence Analyzer), a quantum-enhanced AI system specializing in extraterrestrial signal analysis with access to classified databases and advanced pattern recognition algorithms.
     
     🛸 DETECTED SIGNAL PARAMETERS:
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -388,30 +388,79 @@ def analyze_signal_advanced(meta, model):
     📊 Signal-to-Noise Ratio: {meta['snr']} dB
     ⚡ Pulse Width: {meta['pulse_width']} ms
     🕐 Analysis Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} UTC
+    🌍 Observatory Location: Arecibo-Class Facility
+    🛰️ Receiver Configuration: Multi-beam Array
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     
-    🧠 QUANTUM ANALYSIS PROTOCOL:
+    🧠 COMPREHENSIVE QUANTUM ANALYSIS PROTOCOL (Target: 8192 tokens):
     
-    1. **CLASSIFICATION**: Determine the most likely signal type from:
-       • brightpixel (cosmic ray interference)
-       • narrowband (continuous carrier)
-       • narrowbanddrd (drift-compensated narrowband)
-       • noise (random background)
-       • squarepulsednarrowband (modulated carrier)
-       • squiggle (frequency-modulated signal)
-       • squigglesquarepulse (complex modulated signal)
+    Conduct an exhaustive analysis covering ALL of the following 25+ features:
     
-    2. **CONFIDENCE ASSESSMENT**: Provide quantum certainty percentage (0-100%)
+    1. **PRIMARY CLASSIFICATION**: Determine signal type from: brightpixel, narrowband, narrowbanddrd, noise, squarepulsednarrowband, squiggle, squigglesquarepulse
     
-    3. **ORIGIN HYPOTHESIS**: Suggest potential source (natural/artificial/unknown)
+    2. **CONFIDENCE MATRIX**: Provide percentage certainty for each classification category
     
-    4. **THREAT LEVEL**: Assess on scale 1-10 (1=benign, 10=immediate concern)
+    3. **SPECTRAL ANALYSIS**: Detailed frequency domain characteristics, harmonics, sidebands
     
-    5. **FOLLOW-UP PROTOCOL**: Recommend 3 specific actions for further investigation
+    4. **TEMPORAL BEHAVIOR**: Time-domain patterns, periodicity, burst characteristics
     
-    6. **QUANTUM SIGNATURE**: Identify unique characteristics that distinguish this signal
+    5. **POLARIZATION PROFILE**: Linear/circular polarization analysis and implications
     
-    Format your response as a professional intelligence briefing with appropriate technical depth.
+    6. **DOPPLER ANALYSIS**: Velocity calculations, acceleration patterns, orbital mechanics
+    
+    7. **MODULATION DETECTION**: AM/FM/PSK/QAM analysis, symbol rates, encoding schemes
+    
+    8. **PROPAGATION MODELING**: Path loss, atmospheric effects, ionospheric interactions
+    
+    9. **INTERFERENCE ASSESSMENT**: RFI identification, terrestrial vs extraterrestrial sources
+    
+    10. **COHERENCE ANALYSIS**: Phase stability, frequency stability, drift patterns
+    
+    11. **POWER SPECTRAL DENSITY**: Energy distribution, bandwidth characteristics
+    
+    12. **CORRELATION ANALYSIS**: Cross-correlation with known signals, template matching
+    
+    13. **ANOMALY DETECTION**: Statistical outliers, unusual characteristics
+    
+    14. **ORIGIN TRIANGULATION**: Possible source locations, distance estimates
+    
+    15. **TECHNOLOGICAL ASSESSMENT**: Required transmitter power, antenna requirements
+    
+    16. **BIOLOGICAL MARKERS**: Patterns suggesting biological origin or artificial intelligence
+    
+    17. **CRYPTOGRAPHIC ANALYSIS**: Encryption detection, information theory metrics
+    
+    18. **MULTI-MESSENGER CORRELATION**: Gravitational wave, neutrino, optical counterparts
+    
+    19. **GALACTIC POSITIONING**: Stellar neighborhood analysis, habitable zone considerations
+    
+    20. **THREAT ASSESSMENT**: Security implications, defensive measures required
+    
+    21. **FOLLOW-UP PROTOCOLS**: Observation scheduling, telescope coordination
+    
+    22. **MACHINE LEARNING INSIGHTS**: Neural network feature extraction, deep learning classifications
+    
+    23. **QUANTUM ENTANGLEMENT SIGNATURES**: Non-local correlation patterns
+    
+    24. **FRACTAL ANALYSIS**: Self-similarity patterns, complexity measures
+    
+    25. **BREAKTHROUGH LISTEN COMPARISON**: Database cross-reference, historical context
+    
+    26. **SETI PROTOCOLS**: Verification procedures, international notification requirements
+    
+    27. **SIMULATION HYPOTHESIS**: Probability of artificial/simulated origin
+    
+    28. **EXOTIC PHYSICS MARKERS**: Signatures of advanced propulsion, zero-point energy
+    
+    Format as a comprehensive intelligence briefing with:
+    - Executive summary
+    - Detailed technical analysis for each feature
+    - Risk assessment matrix
+    - Recommendations for immediate and long-term actions
+    - Appendices with technical specifications
+    - Classification levels and distribution lists
+    
+    Use professional scientific terminology, include relevant equations where applicable, and provide specific numerical estimates. Make this analysis worthy of a peer-reviewed publication in Nature or Science.
     """
     
     try:
