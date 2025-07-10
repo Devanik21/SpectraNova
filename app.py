@@ -76,4 +76,4 @@ if st.button("🚀 Classify & Get Insights"):
 
 # Optionally show uploaded image
 if img_file:
-    st.image(img_file, caption="Uploaded Spectrogram", use_column_width=True)
+    st.image(img_file, caption="Uploaded Spectrogram", use_container_width=True)
