@@ -631,7 +631,7 @@ st.markdown("""
 Powered by Advanced Neural Networks & Quantum Computing<br>
 🔬 Searching for Intelligence Beyond Earth 🌠
 </div>
-""", unsafe_allow_html=True), '', text, flags=re.MULTILINE # Strip whitespace
+""", unsafe_allow_html=True), '', text, flags=re.MULTILINE)  # Strip whitespace
     
     # Ensure proper markdown formatting
     text = re.sub(r'^([^#\n])', r'\1', text, flags=re.MULTILINE)
