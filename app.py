@@ -464,37 +464,34 @@ except Exception as e:
     st.stop()
 
 # Main interface
-col1, col2 = st.columns([2, 1])
+st.markdown("### 📡 **SIGNAL ACQUISITION INTERFACE**")
 
-with col1:
-    st.markdown("### 📡 **SIGNAL ACQUISITION INTERFACE**")
-    
-    # File uploader
-    img_file = st.file_uploader(
-        "📊 Upload Signal Spectrogram (optional)",
-        type=["png", "jpg", "jpeg"],
-        help="🖼️ Upload spectrogram for visual analysis"
-    )
-    
-    # Signal parameters
-    st.markdown("### 🎛️ **QUANTUM SIGNAL PARAMETERS**")
-    
-    param_col1, param_col2 = st.columns(2)
-    
-    with param_col1:
-        peak_freq = st.number_input("🔊 Peak Frequency (MHz)", value=1420.406, format="%.3f", help="🌟 Hydrogen line frequency")
-        drift_rate = st.number_input("📡 Drift Rate (Hz/s)", value=0.0, format="%.6f", help="🚀 Doppler shift rate")
-    
-    with param_col2:
-        snr = st.number_input("📊 Signal-to-Noise Ratio (dB)", value=15.7, format="%.1f", help="🔋 Signal strength")
-        pulse_width = st.number_input("⚡ Pulse Width (ms)", value=1.0, format="%.3f", help="⏱️ Signal duration")
+# File uploader
+img_file = st.file_uploader(
+    "📊 Upload Signal Spectrogram (optional)",
+    type=["png", "jpg", "jpeg"],
+    help="🖼️ Upload spectrogram for visual analysis"
+)
 
-with col2:
-    st.markdown("### 🌌 **QUANTUM VISUALIZATION**")
-    
-    # Create real-time visualization
-    fig = create_quantum_visualization()
-    st.plotly_chart(fig, use_container_width=True)
+# Signal parameters
+st.markdown("### 🎛️ **QUANTUM SIGNAL PARAMETERS**")
+
+param_col1, param_col2 = st.columns(2)
+
+with param_col1:
+    peak_freq = st.number_input("🔊 Peak Frequency (MHz)", value=1420.406, format="%.3f", help="🌟 Hydrogen line frequency")
+    drift_rate = st.number_input("📡 Drift Rate (Hz/s)", value=0.0, format="%.6f", help="🚀 Doppler shift rate")
+
+with param_col2:
+    snr = st.number_input("📊 Signal-to-Noise Ratio (dB)", value=15.7, format="%.1f", help="🔋 Signal strength")
+    pulse_width = st.number_input("⚡ Pulse Width (ms)", value=1.0, format="%.3f", help="⏱️ Signal duration")
+
+# Quantum visualization moved below parameters
+st.markdown("### 🌌 **QUANTUM VISUALIZATION**")
+
+# Create real-time visualization
+fig = create_quantum_visualization()
+st.plotly_chart(fig, use_container_width=True)
 
 # Analysis button
 st.markdown("### 🧠 **QUANTUM ANALYSIS ENGINE**")
