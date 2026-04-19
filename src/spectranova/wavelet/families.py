@@ -1,3 +1,3 @@
 """Wavelet families definitions."""
 
-WAVELETS = ["morlet", "mexh", "paul"]
+WAVELETS = ("morlet", "mexh", "paul")
